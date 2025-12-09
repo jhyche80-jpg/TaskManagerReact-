@@ -4,7 +4,7 @@ import TaskItem from './taskItem/TaskItem'
 import { useState } from 'react'
 import TaskFilter from './TaskFilter/TaskFilter'
 import TaskList from './TaskList/TaskList'
-
+import './Render.css'
 export default function Render() {
 
   const [task, setTask] = useState<Task[]>([])
@@ -30,6 +30,7 @@ export default function Render() {
     setTask(prev => prev.filter(task => task.id !== taskid))
   }
   const handleAddTask = () => {
+    setError("")
     const newTask: Task = {
       id: Date.now().toString(),
       title,
@@ -38,15 +39,16 @@ export default function Render() {
       priority,
       status: 'pending'
     }
-    if(!title){
+
+    if (!title.trim()) {
       setError("Please enter a Task!")
-      return 
+      return
     }
-    if(!description){
+    if (!description.trim()) {
       setError('Please enter a description!')
       return
     }
-    if(!date){
+    if (!date) {
       setError("Please enter a due date!")
       return
 
@@ -71,19 +73,24 @@ export default function Render() {
   return (
     <>
       <div className='RenderArea'>
+        <h1>Task Manager </h1>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <div className='InputArea'>
 
 
           <div className='InputTask'>
+            <label htmlFor="Title">  Task:</label>
+
             <input
               type="text"
               placeholder="Task title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              name='Title'
             />
           </div>
           <div className='textArea'>
-
+            <label htmlFor="">Description:</label>
             <textarea
               rows={5}
               cols={20}
@@ -95,7 +102,7 @@ export default function Render() {
 
           </div>
           <div className='InputDate'>
-
+            <label htmlFor="">Date:</label>
             <input
               type="date"
               value={date}
@@ -104,7 +111,7 @@ export default function Render() {
 
           </div>
           <div className="InputP">
-
+            <label htmlFor="">  Priority:</label>
             <select
               value={priority}
               onChange={(e) => setPriority(e.target.value as 'low' | 'medium' | 'high')}
@@ -117,24 +124,23 @@ export default function Render() {
 
           </div>
 
-
-
           <button onClick={handleAddTask} className='TaskButton'>Add Task</button>
+          <div className='Filter'>
 
+          </div>
 
 
         </div>
 
-
+        <div className='ListItems'>        
         <TaskFilter onFilterChange={handleFilterChange} />
-
         <TaskList
           tasks={filteredTask}
           onStatusChange={handleStatusChange}
           onDelete={handleDelete}
 
         />
-
+      </div>
       </div>
     </>
   )

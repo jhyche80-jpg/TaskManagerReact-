@@ -82,5 +82,11 @@ Sometimes there are questions to reflect on the project but if there is not , Us
 
 
 
+### Colors used:
 
+- Technicolor Dream
+  - #FF00FF
+  - #00FFFF
+  - #CCFF00
+  - #191970
 

@@ -1,0 +1,46 @@
+.InputArea{
+    display: flex;
+    flex-direction: row;
+}
+.InputTask,.InputDate,.InputP, .textArea{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 10px;
+    padding: 10px;
+    justify-content: start;
+}
+input, textarea,select{
+    background-color: white ;
+    color: black;
+}
+input:hover, textarea:hover,select:hover{
+    border: solid #CCFF00;
+    border-width: 5px;
+}
+input:focus, textarea:focus,select:focus{
+    border: 5px solid #FF00FF ;
+}
+.TaskButton{
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    background-color: black;
+    border-radius: 20px;
+   
+}
+.Filter{
+    margin-top: 32px;
+    margin-left: 10px;
+
+}
+.ListItems{
+    background-color: bisque;
+    color-scheme: light dark;
+    padding-bottom: 20px;   
+
+}
