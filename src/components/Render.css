@@ -42,5 +42,6 @@ input:focus, textarea:focus,select:focus{
     background-color: bisque;
     color-scheme: light dark;
     padding-bottom: 20px;   
+    padding-right: 0;
 
 }

@@ -94,9 +94,10 @@ export default function Render() {
             <textarea
               rows={5}
               cols={20}
-              placeholder="Task description"
+              placeholder="Task description max 20 characters"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              maxLength={20}
             />
 
 
