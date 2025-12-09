@@ -12,7 +12,7 @@ export default function Render() {
   const [title, setTitle] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [priority, setPriority] = useState<'low' | 'medium' | 'high'>('low')
-
+  const [error, setError] = useState<string>('')
   const [filters, setFilters] = useState<{
     status?: TaskStatus
     priority?: 'low' | 'medium' | 'high'
@@ -38,7 +38,19 @@ export default function Render() {
       priority,
       status: 'pending'
     }
+    if(!title){
+      setError("Please enter a Task!")
+      return 
+    }
+    if(!description){
+      setError('Please enter a description!')
+      return
+    }
+    if(!date){
+      setError("Please enter a due date!")
+      return
 
+    }
     setTask(prev => [...prev, newTask])
 
     // clear form after submit
@@ -50,7 +62,7 @@ export default function Render() {
 
 
 
-const filteredTask = task.filter(task => {
+  const filteredTask = task.filter(task => {
     if (filters.status && task.status !== filters.status) return false
     if (filters.priority && task.priority !== filters.priority) return false
     return true
@@ -58,44 +70,72 @@ const filteredTask = task.filter(task => {
 
   return (
     <>
-      <input
-        type="text"
-        placeholder="Task title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
+      <div className='RenderArea'>
+        <div className='InputArea'>
 
-      <input
-        type="text"
-        placeholder="Task description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
 
-      <input
-        type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-      />
+          <div className='InputTask'>
+            <input
+              type="text"
+              placeholder="Task title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div className='textArea'>
 
-      <select
-        value={priority}
-        onChange={(e) => setPriority(e.target.value as 'low' | 'medium' | 'high')}
-      >
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
+            <textarea
+              rows={5}
+              cols={20}
+              placeholder="Task description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
 
-      <button onClick={handleAddTask}>Add Task</button>
 
-      <TaskFilter onFilterChange={handleFilterChange} />
+          </div>
+          <div className='InputDate'>
 
-      <TaskList
-        tasks={filteredTask}
-        onStatusChange={handleStatusChange}
-        onDelete={handleDelete}
-      />
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+
+          </div>
+          <div className="InputP">
+
+            <select
+              value={priority}
+              onChange={(e) => setPriority(e.target.value as 'low' | 'medium' | 'high')}
+            >
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+
+
+          </div>
+
+
+
+          <button onClick={handleAddTask} className='TaskButton'>Add Task</button>
+
+
+
+        </div>
+
+
+        <TaskFilter onFilterChange={handleFilterChange} />
+
+        <TaskList
+          tasks={filteredTask}
+          onStatusChange={handleStatusChange}
+          onDelete={handleDelete}
+
+        />
+
+      </div>
     </>
   )
 }

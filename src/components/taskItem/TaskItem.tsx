@@ -10,7 +10,7 @@ export default function TaskItem({ task, onStatusChange, onDelete }: TaskItemPro
         <div>
             <li className="TasskItem">
                 <h3>{task.title}</h3>
-                <p>  {task.description} </p>
+                <p>  Description: {task.description} </p>
                 <p> Due: {task.dueDate}</p>
                 <p> Priority: {task.priority} </p>
                 <select name="" id="" value={task.status} onChange={handleStatusUpdate} >

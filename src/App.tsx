@@ -5,7 +5,7 @@ import './App.css'
 import Render from './components/Render'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>
