@@ -38,14 +38,17 @@ Output will be the result off the input so number 1 above will be number 1 below
 
 ### Step-by-Step Process (What will I need to do)  
 The Outcome of every battle takes place in the planning phase. 
-1. 
-2. 
-3. 
-4. 
+1. Make sure my types are correct 
+2. Type the event handdler 
+3. Keep my selece html element fully controled 
+4. type the delete button 
+5. Test 
 
 
 ## What I did in detail 
-In this section you should say what you did and why and if you made refinements as well. 
+In this section you should say what you did and why and if you made refinements as well.
+
+1. I made the  
 
 
 ## Troubleshooting 
