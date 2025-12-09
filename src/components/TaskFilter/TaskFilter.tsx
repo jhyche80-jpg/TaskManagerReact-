@@ -5,7 +5,7 @@ import type { TaskFilterProps } from '../types'
 export default function TaskFilter({ onFilterChange }: TaskFilterProps) {
     const [status, setStatus] = useState()
     const [priority, setPriority] = useState()
-    const updateFilter = (key, value) => {
+    const updateFilter = (key:string, value:string) => {
         const filters = {
             status, priority, [key]: value,
         }
